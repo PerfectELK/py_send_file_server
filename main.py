@@ -44,9 +44,8 @@ if __name__ == '__main__':
         _f = open(os.path.join(os.getcwd(),'files',str(data, 'UTF-8')), 'ab')
         conn.send(b'1')
         while True:
-            _data = conn.recv(4096)
+            _data = conn.recv(1024 * 1024)
             _f.write(_data)
-            conn.send(b'1')
             if not _data:
                 _f.close()
                 conn.close()
